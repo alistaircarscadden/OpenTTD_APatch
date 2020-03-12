@@ -1021,6 +1021,8 @@ Money GetPrice(Price index, uint cost_factor, const GRFFile *grf_file, int shift
 
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)
 {
+	dist = 25; /* All cargo travels 25 tiles, CMV. Why should companies make more money for choosing distant industries?! */
+
 	const CargoSpec *cs = CargoSpec::Get(cargo_type);
 	if (!cs->IsValid()) {
 		/* User changed newgrfs and some vehicle still carries some cargo which is no longer available. */
